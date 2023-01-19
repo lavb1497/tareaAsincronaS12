@@ -1,0 +1,47 @@
+<h1 class="text-center mt-4 mb-4">Formulario de contacto</h1>
+<div class="container">
+  <div class="row">
+    <div *ngIf="status" class="col col-sm-8 mx-auto text-center">
+      <h3 class="text-center p-2 mt-2 mb-4" class="messaje">Gracias por comunicarte con nosotros</h3>
+    </div>
+    <form [formGroup]="form">
+      <div class="col col-sm-8 mx-auto">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Nombre *</label>
+          <input type="text" class="form-control" formControlName="name" [ngClass]="{'error-border': form.get('name')?.invalid && form.get('name')?.touched}">
+          <div *ngIf="form.get('name')?.invalid &&  form.get('name')?.touched" class="error">
+            El Nombre es requerido
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Email *</label>
+          <input type="email" class="form-control" formControlName="email" [ngClass]="{'error-border': form.get('email')?.invalid && form.get('email')?.touched}">
+          <div *ngIf="form.get('email')?.invalid &&  form.get('email')?.touched" class="error">
+            El email es requerido
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Celular</label>
+          <input type="number" class="form-control" formControlName="phone" [ngClass]="{'error-border': form.get('phone')?.invalid && form.get('phone')?.touched}">
+          <div *ngIf="form.get('phone')?.invalid &&  form.get('phone')?.touched" class="error">
+            El celular es requerido
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Asunto *</label>
+          <input type="text" class="form-control" formControlName="subjet" [ngClass]="{'error-border': form.get('subjet')?.invalid && form.get('subjet')?.touched}">
+          <div *ngIf="form.get('subjet')?.invalid &&  form.get('subjet')?.touched" class="error">
+            El asunto es requerido
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Mensaje</label>
+          <textarea class="form-control" aria-label="with textarea"></textarea>
+        </div>
+        <div class="mb-3 text-center">
+          <button type="submit" class="btn btn-outline-success" [disabled]="form.invalid" (click)="enviar()">Enviar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
